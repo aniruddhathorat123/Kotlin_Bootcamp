@@ -1,0 +1,60 @@
+Kotlin bootcamp
+
+Advantages of kotlin:
+1: ensure about null pointer exception.
+2: Avoid much more boiler plate code and take care by itself e.g. getter-setter done by complier.
+3: less code and more readeability because of lambda functions.
+
+
+* Basis:
+1: numbers are primitives in kotlin.
+2: all the numerical types in kotlin have a supertype called number.
+3: Number type won't implicitly convert to other type, need type casting explicitly.
+
+4:	? = indicate variable can be null.
+	!! = indicate, you don't know that variable may or may not be null. throws expcetion when it will null.
+	user elivs operator(?:) if you are not sure whether variable returns null or not.
+
+5: un-type arrays : arrayOf("item1", 12) and can use toString on it.
+
+6: Every function in kotlin return something, even when there is no explicitly return specified. So like Main function return type is "Unit" which is kotlin way of saying no value.
+
+7: TO convert inline : Alt+Shift+Enter
+
+8: function with default argument may be expensive to use.
+e.g.: fun acquaStatusReport(acquarium: Any = makeAcquarium())
+every time if we didn't pass the argument it creates the new acquarium.
+
+9: most of the things in kotlin are like the expression but there is while and for loop are exceptions for this.
+find about more grammer : koltinlang.org
+
+10: kotlin filters: 
+compare and return the value which true for the given condition.
+'' = should contain single designated charachter
+"" = consider as string.
+
+filter are kind of eager learner.
+asSequence is kind of lazy learner.
+
+lambdas are the expression which makes the function.
+{ println("Hello") }()
+
+*****
+val half = { num: Int -> num/2} OR val half : (Int) -> Int = { num -> num/2}
+
+half(20)
+res10: kotlin.Int = 10
+*****
+
+Lambdas are more useful with higher order function which takes the function as argument.
+
+Kotlin prefers function parameter to be the last one.
+
+********************
+1. val random1 = random()
+2: val random2 = { random() }
+
+random1 has a value assigned at compile time, and the value never changes when the variable is accessed.
+
+random2 has a lambda assigned at compile time, and the lambda is executed every time the variable is referenced, returning a different value.
+********************
