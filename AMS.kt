@@ -2,7 +2,23 @@ import sun.util.locale.provider.TimeZoneNameProviderImpl
 import java.util.*
 
 fun main(args: Array<String>):Unit {
-    println("Your fortune is : ${getFortuneCookies()}")
+
+    val rollDice = { sides: Int ->
+        if (sides == 0) 0
+        else Random().nextInt(12) + 1
+    }
+    println(rollDice(1))
+
+    val doIt = { var1 : Int, var2 :Int ->
+        var1 + var2
+    }
+
+    fun gamePlay(sides: Int, rollIt: (Int) -> Int):Int {
+        return rollIt(sides)
+    }
+
+
+    //println("Your fortune is : ${getFortuneCookies()}")
     //feedTheFish()
     //println(if (args) "Good Morning" else "Good Night")
     //println(if (args[0].toInt() < 12) "Good Morning, Kotlin" else "Good Night, Kotlin")
