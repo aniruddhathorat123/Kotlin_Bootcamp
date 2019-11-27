@@ -85,3 +85,29 @@ fun dayOfWeek() {
         })
 }
 
+/**
+ * Kotlin REPL code:
+ *
+ * var dirty = 20
+val waterFilter : (Int) -> Int = { dirty -> dirty/2 }
+fun feedFish(dirty: Int) = dirty + 10
+
+fun updateDirty(dirty: Int, operation: (Int) -> Int): Int {
+return operation(dirty)
+}
+
+fun dirtyProcessor() {
+dirty = updateDirty(dirty, waterFilter)
+println(dirty)
+dirty = updateDirty(dirty, ::feedFish)
+println(dirty)
+dirty = updateDirty(dirty, {dirty ->
+dirty +50
+})
+println(dirty)
+}
+
+ OP:= 10 20 70
+ *
+ *
+        */
