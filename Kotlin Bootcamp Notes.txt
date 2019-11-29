@@ -58,3 +58,10 @@ random1 has a value assigned at compile time, and the value never changes when t
 
 random2 has a lambda assigned at compile time, and the lambda is executed every time the variable is referenced, returning a different value.
 ********************
+
+Access Specifiers: 
+1. public by default same as java.
+2. private in same file only.
+3. Internal : Visible anywhere in the same module.
+ 	Module : Set of kotline files compiled together.
+4. Protected: inside class and sub-class can see it.
