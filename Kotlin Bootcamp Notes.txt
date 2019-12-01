@@ -59,9 +59,65 @@ random1 has a value assigned at compile time, and the value never changes when t
 random2 has a lambda assigned at compile time, and the lambda is executed every time the variable is referenced, returning a different value.
 ********************
 
+# Classes and Constructors:
+
 Access Specifiers: 
 1. public by default same as java.
 2. private in same file only.
 3. Internal : Visible anywhere in the same module.
  	Module : Set of kotline files compiled together.
 4. Protected: inside class and sub-class can see it.
+
+ - variable without var or val in constructor parameter, kotlin does not create property for that variable. (Property for variable will be getter or setter)
+
+ - init {} works just like constructor, you can have more than one init block and they always run before any secondary constructor.
+
+ - Classes in kotlin are inherited from top level class called "Any".
+
+ - To inherit any class you need to open it and for also class members and expressions are not implicitly open, you need to explicitly open them, to avoid accidentally leak of implementation details.
+
+ - Data class provides : - getter and setters
+ 						 - Equals method to compare two instances of obejct class.
+
+ - Decomposition process: put property value into each variable and then use it.
+ 	- Number of varible must match to the number of properties, otherwise you get compile time error.
+ 	- Variable should be assign in order they declared in the class constructor.
+
+ - Singleton class: use "object" instead of class to create your class.
+  e.g. : object <class_name>(params...) { }
+
+ - Sealed class: a class that can be subclassed, but only in file which is it declared. because to get info about classes at compile time.
+    - sealed classes are the safe way to represent a fixed number of types.
+
+
+ Pairs: - nest datatype that allows to define generic pair of values.
+ 	- can used to return more than one value form the function.
+ 	val data = ("abc" to "xyz") to ("pqr" to "sss")
+
+	println("${data.first.first} to ${data.second.second}")
+	abc to sss
+
+	val (firstStudent, secondStudent) = data
+
+	println("Students are: $firstStudent")
+	Students are: (abc, xyz)
+
+- list.reverse returns the new list
+- list.sublist: create sublist : sublist(<arg1>, <arg2>) create sublist from arg1 excluding the index of arg2.
+
+	listOf("a","b","ert").sumBy { it.length }
+	getOrDefault(<required_param>, <default_param>)
+	getOrElse(<required_param>) { <else_param> }
+
+- const val is set at compile time.
+- consta val is only works with top level and class delcared with object.
+- Kotlin does not have class level constants. you have to wrap them in comapnion object.
+
+- Companion object are initialize from the static constructor of the containing class. plain obect are lazy initialized.
+
+-extenstion functions allows to add function to the existing class without having access to the source code.
+- inside extension function , "this" is bound to the instencd on which it is called on.
+- extension function does not have access to the private variables.
+- extension function are resolved statically.
+
+- can define extionsion properties Class.property.extension  
