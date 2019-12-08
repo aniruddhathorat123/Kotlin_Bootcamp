@@ -121,3 +121,44 @@ Access Specifiers:
 - extension function are resolved statically.
 
 - can define extionsion properties Class.property.extension  
+
+
+////
+
+generic classes. <T>
+ - for generic you can use any letter or longer name.
+ - type can be inferred by the type of argument while creating object.
+ - generic(<T>) accepts the null.
+ avoid null by <T: Any> : here Any limits the type bound for generic class. you can use any type bound for 
+
+ - In type can only be pass into an object (as parameter).
+ - Out type can only be pass out of object or returned (return value).
+ - constructor can take out type as parameter but not function.
+
+ - reified: makes (something abstract) more concrete or real
+ - use <*> if we dont care what type of generic is used with function call.
+
+ - ALL GENERIC TYPES ARE ONLY USED AT COMPILR TIME BY KOTLIN. RUNTIME ALL GENERICS ARE ERASED TO CREATE COMPLETE CORRECT CODE.
+
+- joinToString : function that returns the string containing the letter with supplied separator.
+
+/////////
+
+Higher order function:
+
+ - with
+
+ fun example(name: String, block: String.() -> Unit )
+
+  - block is the name of function, we can call anything we want.
+  - after colon specify the class that we are extending,
+  - specify the return type after {->} which is Unit in this case.
+
+- run{} extension function that returns the result of the block function.
+- apply{} returns the object it's applied to.
+- let{} returns the copy of the changed object. useful for chaining manipulation together.
+
+
+- for lambda function, it called everytime when it called, creates the memory and cpu overhead, so declaring lambda as inline will replace the function call with actual function instruction at compile time.
+}
+ 
