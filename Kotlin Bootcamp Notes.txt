@@ -129,7 +129,7 @@ generic classes. <T>
  - for generic you can use any letter or longer name.
  - type can be inferred by the type of argument while creating object.
  - generic(<T>) accepts the null.
- avoid null by <T: Any> : here Any limits the type bound for generic class. you can use any type bound for 
+ avoid null by <T: Any> : here Any limits the type bound for generic class. you can use any type bound for generic.
 
  - In type can only be pass into an object (as parameter).
  - Out type can only be pass out of object or returned (return value).
@@ -160,5 +160,9 @@ Higher order function:
 
 
 - for lambda function, it called everytime when it called, creates the memory and cpu overhead, so declaring lambda as inline will replace the function call with actual function instruction at compile time.
-}
+
+
+- SAM: is interface with one method on it.
+	- we can pass lambda in place of SAM
+
  

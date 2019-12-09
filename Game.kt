@@ -10,15 +10,32 @@ class Game {
     val east = { path.add(Direction.EAST) }
     val west = { path.add(Direction.WEST) }
     val end = { path.add(Direction.END); println("Game Over: $path"); path.clear(); false}
+
+    private fun move(where: () -> Boolean ) {
+        where.invoke()
+    }
+
+    fun makeMove(command:String?) {
+        if (command.equals("n")) move(north)
+        else if (command.equals("s")) move(south)
+        else if (command.equals("e")) move(east)
+        else if (command.equals("w")) move(west)
+        else move(end)
+    }
 }
 
 fun main() {
     val game = Game()
-    println(game.path)
+    /*println(game.path)
     game.north()
     game.south()
     game.east()
     game.west()
     game.end()
-    println(game.path)
+    println(game.path)*/
+
+    while (true) {
+        print("Enter a direction: n/s/e/w: ")
+        game.makeMove(readLine())
+    }
 }
