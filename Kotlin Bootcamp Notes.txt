@@ -1,5 +1,8 @@
-Kotlin bootcamp
-
+						***********************
+						*   Kotlin Bootcamp   *
+						***********************
+						
+						
 Advantages of kotlin:
 1: ensure about null pointer exception.
 2: Avoid much more boiler plate code and take care by itself e.g. getter-setter done by complier.
@@ -13,7 +16,11 @@ Advantages of kotlin:
 
 4:	? = indicate variable can be null.
 	!! = indicate, you don't know that variable may or may not be null. throws expcetion when it will null.
-	user elivs operator(?:) if you are not sure whether variable returns null or not.
+	user elvis operator(?:) if you are not sure whether variable returns null or not.
+	
+ 	- property ?: <execute this in case of null property>
+		- can higher order functions:
+		- property?.apply { } ?: <case of null>
 
 5: un-type arrays : arrayOf("item1", 12) and can use toString on it.
 
@@ -70,8 +77,20 @@ Access Specifiers:
 
  - variable without var or val in constructor parameter, kotlin does not create property for that variable. (Property for variable will be getter or setter)
 
- - init {} works just like constructor, you can have more than one init block and they always run before any secondary constructor.
-
+ - init {}
+ 	-works just like constructor, you can have more than one init block and they always run before any secondary              constructor.
+	- No matter where they define, they just execute before the seondary constructor.
+ 	
+ 
+ 	 Class Invocation:
+		|
+	Primary Constructor (class parameter) 
+		|
+	     init { }
+		|
+	Secondary Constructor
+		
+		
  - Classes in kotlin are inherited from top level class called "Any".
 
  - To inherit any class you need to open it and for also class members and expressions are not implicitly open, you need to explicitly open them, to avoid accidentally leak of implementation details.
@@ -115,9 +134,9 @@ Access Specifiers:
 
 - Companion object are initialize from the static constructor of the containing class. plain obect are lazy initialized.
 
--extenstion functions allows to add function to the existing class without having access to the source code.
+-extension functions allows to add function to the existing class without having access to the source code.
 - inside extension function , "this" is bound to the instencd on which it is called on.
-- extension function does not have access to the private variables.
+- extension function does not have access to the private variables. access: public, protected, not sure about internal.
 - extension function are resolved statically.
 
 - can define extionsion properties Class.property.extension  
@@ -154,15 +173,52 @@ Higher order function:
   - after colon specify the class that we are extending,
   - specify the return type after {->} which is Unit in this case.
 
+// Scoping function:
 - run{} extension function that returns the result of the block function.
-- apply{} returns the object it's applied to.
+- apply{} returns the object it's applied to, no duplication of object.
 - let{} returns the copy of the changed object. useful for chaining manipulation together.
+	- https://proandroiddev.com/the-difference-between-kotlins-functions-let-apply-with-run-and-else-ca51a4c696b8
+	
+	class MyClass {
+    	    fun test() {
+		val str: String = "..."
+		val result = str.xxx {
+      	        print(this) // Receiver
+		print(it) // Argument
+		42 // Block return value
+		}
+	    }
+	}
+	
+	- for e.g. of let{} :
+		"this" is receiver : 
+			- This is the instance of MyClass (this@MyClass) because test is a method of MyClass. In case 				  test would be a free function (not attached to any class), we would have a compiler error.
+		"it" argument:
+			- it is the String "...", on which we’ve called let.
+		result:
+			- result is the number 42, that we’ve returned from the block.
+			
+
+			╔══════════╦═════════════════╦═══════════════╦═══════════════╗
+			║ Function ║ Receiver (this) ║ Argument (it) ║    Result     ║
+			╠══════════╬═════════════════╬═══════════════╬═══════════════╣
+			║ let      ║ this@MyClass    ║ String("...") ║ Int(42)       ║
+			║ run      ║ String("...")   ║ N\A           ║ Int(42)       ║
+			║ run*     ║ this@MyClass    ║ N\A           ║ Int(42)       ║
+			║ with*    ║ String("...")   ║ N\A           ║ Int(42)       ║
+			║ apply    ║ String("...")   ║ N\A           ║ String("...") ║
+			║ also     ║ this@MyClass    ║ String("...") ║ String("...") ║
+			╚══════════╩═════════════════╩═══════════════╩═══════════════╝
 
 
-- for lambda function, it called everytime when it called, creates the memory and cpu overhead, so declaring lambda as inline will replace the function call with actual function instruction at compile time.
+- for lambda function, it called everytime when it referred in code, so compile time assign and run time execution every time, creates the memory and cpu overhead, so declaring lambda as inline will replace the function call with actual function instruction at compile time.
+
+- Omit lambda parameter: 
+	- 
 
 
 - SAM: is interface with one method on it.
 	- we can pass lambda in place of SAM
 
+- No need of builder pattern in kotlin, because of default and named arguments.
  
