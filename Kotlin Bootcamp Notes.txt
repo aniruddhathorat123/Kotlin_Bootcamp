@@ -222,3 +222,5 @@ Higher order function:
 
 - No need of builder pattern in kotlin, because of default and named arguments.
  
+- https://kotlinlang.org/docs/reference/delegated-properties.html
+
