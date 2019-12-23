@@ -272,5 +272,33 @@ val finalRefer = mainOne(11)
 println("final value : ${finalRefer.getData()}")
 O/P>> Class value by object3: 11final value : kotlin.Unit
 
+// another way of delegation
+interface Inter1 {
+    fun getData()
+}
+
+abstract class AbsClass1(): Inter1 {
+    abstract override fun getData()
+}
+
+class Delegator(val data1: Int): Inter1 {
+    override fun getData() {
+        println("delegation of the property: ")
+    }
+}
+
+class Delegator(val data1: Int): Inter1 {
+    override fun getData() {
+        println("delegation of the property: ${data1}")
+    }
+}
+
+class MainClass(val data1: Int): AbsClass1(), Inter1 by Delegator(data1)
+
+val refer = MainClass(10)
+refer.getData()
+O/P>> delegation of the property: 10
+
+
 ///////////////////////////////////////////
 
