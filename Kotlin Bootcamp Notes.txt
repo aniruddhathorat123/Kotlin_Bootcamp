@@ -224,3 +224,53 @@ Higher order function:
  
 - https://kotlinlang.org/docs/reference/delegated-properties.html
 
+///////////////////////// delegation example :
+//using singleton object
+interface inter1 {
+    fun getData()
+}
+
+//delegation objects
+object obj1: inter1 {
+    override fun getData() {
+        println("from object 1")
+    }
+}
+
+object obj2: inter1 {
+    override fun getData() {
+        println("from object 2")
+    }
+}
+
+class class1: inter1 by obj1
+
+val refer1 = class1()
+
+println("value for class 1: ${refer1.getData()}")
+O\P>> from object 1value for class 1: kotlin.Unit
+
+// using class
+class class2(val data1 : Int)
+
+interface inter2 {
+    fun getData()
+}
+
+//delegation class
+class referClass(val refer: class2): inter2 {
+    override fun getData() {
+        println("Class value by object3: ${refer.data1}")
+    }
+}                        
+
+class mainOne: inter2 by referClass(class2(10))
+
+class mainOne(val params: Int): inter2 by referClass(class2(params))
+
+val finalRefer = mainOne(11)
+println("final value : ${finalRefer.getData()}")
+O/P>> Class value by object3: 11final value : kotlin.Unit
+
+///////////////////////////////////////////
+
